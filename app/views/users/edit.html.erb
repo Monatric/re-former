@@ -1,0 +1,24 @@
+<div>Here at app/views/users/edit.html.erb</div>
+<%= form_with model: @user do |form| %>
+
+  <% if @user.errors.any? %>
+    <% p @user.errors.full_messages %>
+    <% @user.errors.full_messages.each do |error| %>
+      <div style='color: red'>error: <%= error %> </div>
+    <% end %>
+  <% end %>
+
+  <%= form.label :email %>
+  <%= form.email_field :email, placeholder: "example@example.com", required: true %>
+  <br>
+  <br>
+  <%= form.label :username, value: "Your user name here" %>
+  <%= form.text_field :username, required: true, minlength: 3, maxlength: 12 %>
+  <br>
+  <br>
+  <%= form.label :password %>
+  <%= form.password_field :password, minlength: 6, maxlength: 20, required: true %>
+  <br>
+  <br>
+  <%= form.submit %>
+<% end %>
